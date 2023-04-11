@@ -35,7 +35,7 @@ const main = async () => {
                 break;
         }
         
-        guardarDB( tareas.listadoArr );
+      //  guardarDB( tareas.listadoArr );
 
         await pausaInquirer();
     } while (opt !== '0')
