@@ -14,6 +14,7 @@ import {
 import {
     Tareas
 } from './models/tareas.js';
+import { guardarDB } from './helpers/guardarArchivo.js';
 
 const main = async () => {
     console.log("hello world");
@@ -33,7 +34,8 @@ const main = async () => {
                 console.log(tareas.listadoArr)
                 break;
         }
-
+        
+        guardarDB( tareas.listadoArr );
 
         await pausaInquirer();
     } while (opt !== '0')
