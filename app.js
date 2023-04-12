@@ -14,12 +14,16 @@ import {
 import {
     Tareas
 } from './models/tareas.js';
-import { guardarDB } from './helpers/guardarArchivo.js';
+import { guardarDB, leerDB } from './helpers/guardarArchivo.js';
 
 const main = async () => {
-    console.log("hello world");
-    const tareas = new Tareas();
+    
     let opt = '';
+    const tareas = new Tareas();
+    const tareasDB = await leerDB();
+    if( tareasDB ){
+        tareas.cargarTareasFromArray(tareasDB)
+    }
     do {
         opt = await inquirerMenu(opt);
 
@@ -35,7 +39,7 @@ const main = async () => {
                 break;
         }
         
-      //  guardarDB( tareas.listadoArr );
+        guardarDB( tareas.listadoArr );
 
         await pausaInquirer();
     } while (opt !== '0')
