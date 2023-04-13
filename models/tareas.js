@@ -24,6 +24,19 @@ class Tareas{
    
     }
 
+   get listadoCompleto(){
+        let allListado = this.listadoArr;
+        allListado.forEach((tarea,i )=>{
+            const inx = `${i + 1}.green`
+            const { desc, completadoEn } = tarea;
+            const estado = ( completadoEn ) ? 'Completada'.green
+                                            : 'Pendiente'.red
+
+            console.log(`${ inx } ${ desc } :: ${ estado }`)
+        })
+
+    }
+
     crearTarea( desc = '' ){
         const tarea = new Tarea(desc);
         this._listado[tarea.id] = tarea;

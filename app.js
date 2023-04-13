@@ -17,6 +17,7 @@ import {
 import { guardarDB, leerDB } from './helpers/guardarArchivo.js';
 
 const main = async () => {
+
     
     let opt = '';
     const tareas = new Tareas();
@@ -35,7 +36,8 @@ const main = async () => {
                 break;
             case '2':
               //  console.log(tareas._listado);
-                console.log(tareas.listadoArr)
+                //console.log(tareas.listadoArr)
+                console.log(tareas.listadoCompleto);
                 break;
         }
         
@@ -43,8 +45,9 @@ const main = async () => {
 
         await pausaInquirer();
     } while (opt !== '0')
+    
 }
 
 main()
     .then()
-    .catch(e => console.log('el error: ' + JSON.stringify(e)))
+    .catch(e => console.log('el error: ' + e));
