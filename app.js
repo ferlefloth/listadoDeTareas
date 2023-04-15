@@ -35,10 +35,13 @@ const main = async () => {
 
                 break;
             case '2':
-              //  console.log(tareas._listado);
-                //console.log(tareas.listadoArr)
                 console.log(tareas.listadoCompleto);
                 break;
+            case '3':
+                console.log(tareas.listarPendientesCompletadas(true));
+                break;
+            case '4':
+                console.log(tareas.listarPendientesCompletadas(false))
         }
         
         guardarDB( tareas.listadoArr );

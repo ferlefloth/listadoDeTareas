@@ -27,7 +27,7 @@ class Tareas{
    get listadoCompleto(){
         let allListado = this.listadoArr;
         allListado.forEach((tarea,i )=>{
-            const inx = `${i + 1}.green`
+            const inx = `${i + 1}`.green
             const { desc, completadoEn } = tarea;
             const estado = ( completadoEn ) ? 'Completada'.green
                                             : 'Pendiente'.red
@@ -35,6 +35,28 @@ class Tareas{
             console.log(`${ inx } ${ desc } :: ${ estado }`)
         })
 
+    }
+
+     listarPendientesCompletadas( completadas = true){
+        
+       let contador = 0;
+       this.listadoArr.forEach((tarea,i )=>{
+
+           const { desc, completadoEn } = tarea;
+           const estado = ( completadoEn ) ? 'Completada'.green
+                                           : 'Pendiente'.red
+            if( completadas ){
+                if( completadoEn ){
+                    contador += 1
+                    console.log(`${ (contador + '.').green } ${ desc } :: ${ estado }`)
+                }
+            }else{
+                if( !completadoEn ){
+                    contador += 1
+                    console.log(`${ (contador + '.').green } ${ desc } :: ${ estado }`)
+                }
+            }
+       })
     }
 
     crearTarea( desc = '' ){
