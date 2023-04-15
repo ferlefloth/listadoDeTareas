@@ -6,7 +6,8 @@ import {
 import {
     inquirerMenu,
     pausaInquirer,
-    leerInput
+    leerInput,
+    listadoTareasBorrar
 } from './helpers/inquirer.js';
 import {
     Tarea
@@ -42,6 +43,10 @@ const main = async () => {
                 break;
             case '4':
                 console.log(tareas.listarPendientesCompletadas(false))
+            case '6':
+                const id = await listadoTareasBorrar( tareas.listadoArr)
+                console.log(id)
+                break;
         }
         
         guardarDB( tareas.listadoArr );
