@@ -8,7 +8,8 @@ import {
     pausaInquirer,
     leerInput,
     listadoTareasBorrar,
-    confirmar
+    confirmar,
+    mostrarListadoChecklist
 } from './helpers/inquirer.js';
 import {
     Tarea
@@ -44,6 +45,11 @@ const main = async () => {
                 break;
             case '4':
                 console.log(tareas.listarPendientesCompletadas(false))
+                break;
+            case '5':
+                const ids = await mostrarListadoChecklist( tareas.listadoArr )
+                console.log(ids)
+                break;
             case '6':
                 const id = await listadoTareasBorrar( tareas.listadoArr)
                 if( id !== '0'){
