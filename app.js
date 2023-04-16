@@ -7,7 +7,8 @@ import {
     inquirerMenu,
     pausaInquirer,
     leerInput,
-    listadoTareasBorrar
+    listadoTareasBorrar,
+    confirmar
 } from './helpers/inquirer.js';
 import {
     Tarea
@@ -45,7 +46,13 @@ const main = async () => {
                 console.log(tareas.listarPendientesCompletadas(false))
             case '6':
                 const id = await listadoTareasBorrar( tareas.listadoArr)
-                console.log(id)
+                if( id !== '0'){
+                const ok = await confirmar('¿Estás seguro de querer borrarlo?');
+                if(ok){
+                    tareas.borrarTarea(id);
+                    console.log('Tarea borrada')
+                }
+            }
                 break;
         }
         
